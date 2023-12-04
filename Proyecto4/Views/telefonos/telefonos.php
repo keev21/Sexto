@@ -11,7 +11,7 @@
                 <h5 class="card-title fw-semibold mb-4">Lista de telefonos</h5>
 
                 <div class="table-responsive">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_usuario">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modal_telefonos">
                         Nuevo Teléfono
                     </button>
                     <table class="table text-nowrap mb-0 align-middle">
@@ -53,7 +53,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="Modal_usuario" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="Modal_telefonos" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form method="post" id="form_telefonos">

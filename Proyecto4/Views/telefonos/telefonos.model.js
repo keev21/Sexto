@@ -6,6 +6,7 @@ class Telefonos_model{
         ram,
         almacenamiento,
         costo,
+        data,
         Ruta
     ){
         this.id_telefono = id_telefono;
@@ -14,6 +15,7 @@ class Telefonos_model{
         this.ram = ram;
         this.almacenamiento = almacenamiento;
         this.costo = costo;
+        this.data  =data;
         this.Ruta = Ruta;
 
     }
@@ -41,28 +43,36 @@ class Telefonos_model{
     }
     insertar() {
         var dato = new FormData();
-        dato.append('marca', $("#marca").val());
-        dato.append('modelo', $("#modelo").val());
-        dato.append('ram', $("#ram").val());
-        dato.append('almacenamiento', $("#almacenamiento").val());
-        dato.append('costo', $("#costo").val());
-    
+        dato = this.data;
         $.ajax({
-            url: "../../Controllers/telefonos.controller.php?op=insertar",
-            type: "POST",
-            data: dato,
-            contentType: false,
-            processData: false,
-            success: function (res) {
-                res = JSON.parse(res);
-                if (res === "ok") {
-                    Swal.fire("Telefonos", "Telefono Registrado", "success");
-                    todos_controlador();
-                } else {
-                    Swal.fire("Error", res, "error");
-                }
+          url: "../../Controllers/telefonos.controller.php?op=insertar",
+          type: "POST",
+          data: dato,
+          contentType: false,
+          processData: false,
+          success: function (res) {
+            res = JSON.parse(res);
+            if (res === "ok") {
+              Swal.fire("telefonos", "telefonos Registrado", "success");
+              todos_controlador();
+            } else {
+              Swal.fire("Error", res, "error");
             }
+          }
+         
         });
-    }
+        this.limpia_Cajas();  
+        
+      }
+      limpia_Cajas(){
+        document.getElementById("marca").value = "";
+        document.getElementById("modelo").value = "";
+        document.getElementById("ram").value = "";
+        document.getElementById("almacenamiento").value = "";
+        document.getElementById("costo").value = "";
+
+        
+        $("#Modal_telefonos").modal("hide");
+      }
     
 }
