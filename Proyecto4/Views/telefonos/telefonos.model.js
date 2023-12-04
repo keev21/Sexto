@@ -39,4 +39,30 @@ class Telefonos_model{
         return html;
     
     }
+    insertar() {
+        var dato = new FormData();
+        dato.append('marca', $("#marca").val());
+        dato.append('modelo', $("#modelo").val());
+        dato.append('ram', $("#ram").val());
+        dato.append('almacenamiento', $("#almacenamiento").val());
+        dato.append('costo', $("#costo").val());
+    
+        $.ajax({
+            url: "../../Controllers/telefonos.controller.php?op=insertar",
+            type: "POST",
+            data: dato,
+            contentType: false,
+            processData: false,
+            success: function (res) {
+                res = JSON.parse(res);
+                if (res === "ok") {
+                    Swal.fire("Telefonos", "Telefono Registrado", "success");
+                    todos_controlador();
+                } else {
+                    Swal.fire("Error", res, "error");
+                }
+            }
+        });
+    }
+    
 }
